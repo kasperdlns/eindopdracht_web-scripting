@@ -1,13 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/d9196de2ad.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <header>
+        <nav class="navbar width">
+            <img src="images/logo.svg" alt="logo" width="100">
+
+            <ul class="navItems">
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Tuin</a></li>
+                <li><a href="">Mijn activiteiten</a></li>
+                <li id="contact"><a href="">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard width">
+        <div class="topItems">
+            <section class="card__laatste">
+                <div class="headingBtn">
+                    <h2>Laatste activiteit</h2>
+                    <button> + Activiteit toevoegen</button>
+                </div>
+                <div class="info__activiteit">
+                    <h1 class="titel">Afternoon Run</h1>
+                    <p class="afstand"><span>12,64</span> km</p>
+                    <p>Pace: <span class="pace t50">4,57 min/km</span></p>
+                    <p>Tijd: <span class="tijd t50">00:45:34</span></p>
+                    <p>Datum: <span class="datum t50">14/03/2026</span></p>
+                    <p>notitie: <span class="t50">voorbereiding marathon</span></p>
+                </div>
+            </section>
+
+            <section class="overzicht">
+                <h2>Overzicht van jouw tuin</h2>
+                <div>
+                    <p><span>7</span> bomen heb je in totaal staan</p>
+                    <p><span>5</span> bomen zijn volledig gezond</p>
+                    <p><span>1</span> plant is aan het verwelken</p>
+                    <p><span>1</span> plant is gestorven</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="quote">
+            <p>Motivatie quote van de dag:</p>
+            <h1>Ookal is het maar 5 minuutjes, elke beweging telt</h1>
+        </section>
+
+        <section class="doelen">
+            <div class="doelBtn">
+                <h2>Jouw doelen:</h2>
+                <button>+ doel toevoegen</button>
+            </div>
+
+            <div class="progressBars">
+                <article>
+                    <p>2000km lopen dit jaar</p>
+                    <progress value="30" max="100"></progress>
+                </article>
+
+                <article>
+                    <p>200 actieve minuten deze week</p>
+                    <progress value="30" max="100"></progress>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="width">
+        <div class="links">
+            <h3>Snelle links</h3>
+            <a href="">Dashboard</a>
+            <a href="">Tuin</a>
+            <a href="">Activiteiten</a>
+            <a href="">Contact</a>
+        </div>
+
+        <div class="socialeMedia">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </footer>
     <script src="javascript/script.js"></script>
 </body>
+
 </html>
