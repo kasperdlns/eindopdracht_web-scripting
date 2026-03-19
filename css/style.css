@@ -68,7 +68,7 @@ body {
     padding-right: 20%;
 }
 
-.dashboard {
+main {
     padding-top: calc(87px + 2rem);
 }
 
@@ -145,6 +145,7 @@ button:hover {
     flex-direction: column;
     border-radius: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);  
+    text-align: center;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease, background-color 0.5s ease;
@@ -248,7 +249,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 2rem 20%;
 }
 
 .links {
@@ -274,6 +275,17 @@ footer {
 i {
     font-size: 1.5rem;
 }
+
+.dagen {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+
+.dagen span {
+    background: #D9FF00;
+}
+
 
 @media (max-width: 1055px) {
     .width {
