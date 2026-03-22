@@ -68,6 +68,34 @@ body {
     padding-right: 20%;
 }
 
+.popup {
+    display: none; /* verborgen bij start */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    border: 5px solid black;
+    flex-direction: column; /* werkt alleen als display: flex */
+    gap: 1rem;
+}
+
+.popup div:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.popup div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup button {
+    width: 100%;
+    font-size: 1rem;
+}
+
 main {
     padding-top: calc(87px + 2rem);
 }
@@ -116,14 +144,11 @@ button:hover {
     cursor: pointer;
 }
 
-.afstand {
+.afstand__dashboard {
     margin-top: -2rem;
-}
-
-.afstand span {
     font-size: 6rem;
-}
 
+}
 .t50 {
     opacity: 50%;
 }
@@ -276,6 +301,18 @@ i {
     font-size: 1.5rem;
 }
 
+.challenges header {
+    background-color: #D9FF00;
+    padding: 1rem 2rem;
+    border: 1px solid black;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.challenge {
+    visibility: hidden;
+}
+
 .dagen {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -283,7 +320,13 @@ i {
 }
 
 .dagen span {
-    background: #D9FF00;
+    border: 1px solid black;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
 }
 
 

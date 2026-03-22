@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="overlay">
         <nav class="navbar width">
             <img src="images/logo.svg" alt="logo" width="100">
 
@@ -25,20 +25,20 @@
         </nav>
     </header>
 
-    <main class="dashboard width">
+    <main class="dashboard width overlay">
         <div class="topItems">
             <section class="card__laatste">
                 <div class="headingBtn">
                     <h2>Laatste activiteit</h2>
-                    <button> + Activiteit toevoegen</button>
+                    <button class="addActivitiy"> + Activiteit toevoegen</button>
                 </div>
                 <div class="info__activiteit">
-                    <h1 class="titel">Afternoon Run</h1>
-                    <p class="afstand"><span>12,64</span> km</p>
-                    <p>Pace: <span class="pace t50">4,57 min/km</span></p>
-                    <p>Tijd: <span class="tijd t50">00:45:34</span></p>
-                    <p>Datum: <span class="datum t50">14/03/2026</span></p>
-                    <p>notitie: <span class="t50">voorbereiding marathon</span></p>
+                    <h1 class="titel__dashboard">Afternoon Run</h1>
+                    <p ><span class="afstand__dashboard">00,00</span> km</p>
+                    <p>Pace: <span class="snelheid__dashboard t50">00 km/u</span></p>
+                    <p>Tijd: <span class="tijd__dashboard t50">00:00:00</span></p>
+                    <p>Datum: <span class="datum__dashboard t50">1/1/2026</span></p>
+                    <p>notitie: <span class="notitie__dashboard t50">Voeg een activiteit toe om dit dashboard te vullen</span></p>
                 </div>
             </section>
 
@@ -79,7 +79,7 @@
 
     </main>
 
-    <footer class="width">
+    <footer class="width overlay">
         <div class="links">
             <h3>Snelle links</h3>
             <a href="">Dashboard</a>
@@ -94,6 +94,52 @@
             <i class="fa-brands fa-linkedin"></i>
         </div>
     </footer>
+
+   <div class="popup">
+        <h1>Voeg een nieuwe activiteit toe</h1>
+
+        <div class="titelPopup">
+            <label for="titel__Input">Voeg een titel toe</label>
+            <input id="titel__Input" type="text" placeholder="Afternoon Run">
+        </div>
+
+        <div class="activiteitPopup">
+            <label for="Activiteit__Input">Kies een activiteit</label>
+            <select id="Activiteit__Input" name="Activiteit">
+                <option value="zwemmen">Zwemmen</option>
+                <option value="lopen">Lopen</option>
+                <option value="fietsen">Fietsen</option>
+            </select>
+        </div>
+
+        <div class="afstandPopup">
+            <label for="afstand__Input">Wat was jouw afstand?</label>
+            <input id="afstand__Input" type="number" placeholder="15km">
+        </div>
+
+        <div class="snelheidPopup">
+            <label for="snelheid__Input">Wat was jouw snelheid?</label>
+            <input id="snelheid__Input" type="number" placeholder="12 km/u">
+        </div>
+
+        <div class="tijdPopup">
+            <label for="tijd__Input">Wat was jouw tijd?</label>
+            <input id="tijd__Input" type="text" placeholder="00:56:12">
+        </div>
+
+        <div class="datumPopup">
+            <label for="datum__Input">Wanneer was de activiteit?</label>
+            <input id="datum__Input" type="date">
+        </div>
+
+        <div class="notitie">
+            <label for="notitie__Input">Wil je nog een notitie toevoegen?</label>
+            <textarea id="notitie__Input" placeholder="voorbereiding voor de halve marathon"></textarea>
+        </div>
+
+        <button class="saveActivitiy">Opslaan</button>
+</div>
+
     <script src="javascript/script.js"></script>
 </body>
 

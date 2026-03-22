@@ -19,7 +19,6 @@ functionaliteiten:
 *** getDate() ***
 *** dataSet ***
 *** classList.add/remove ***
-*** .style ***
 
 - terugblik van de maand:
         - alle dagen dat al geweest zijn optellen
@@ -37,4 +36,8 @@ functionaliteiten:
 - doelen gehaald: css animatie
 
 - per doel: input om aantal te vragen per balk? bv ik heb al 5 min vd 200 min gesport. balkje vult (local storage?)
+
+
+<!-- contact page api: -->
+open data api quotes
 
