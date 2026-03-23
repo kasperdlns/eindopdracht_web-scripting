@@ -334,6 +334,16 @@ i {
     color: white;
 }
 
+.failed {
+    background-color: brown;
+    color: white;
+}
+
+.succeeded {
+    background-color: darkgreen;
+    color: white;
+}
+
 
 @media (max-width: 1055px) {
     .width {
