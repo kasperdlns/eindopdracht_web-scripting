@@ -1,9 +1,9 @@
 // nieuwe activiteit toevoegen aan dashboard
-let addActivitiy = document.querySelector(".addActivitiy");
+let addActivity = document.querySelector(".addActivity");
 const popup = document.querySelector(".popup");
 
 //popup tevoorschijn laten komen
-addActivitiy.addEventListener("click", function () {
+addActivity.addEventListener("click", function () {
     popup.style.display = "block"
 })
 
@@ -80,7 +80,7 @@ function saveActivity() {
     saveToLocalStorage(nieuweActiviteit)
 }
 
-
+//opslaan in local storage
 function saveToLocalStorage(nieuweActiviteit) {
     let activiteiten = localStorage.getItem("activities")
 
@@ -95,11 +95,10 @@ function saveToLocalStorage(nieuweActiviteit) {
     localStorage.setItem("activities", JSON.stringify(activiteiten));
 }
 
-
+//opladen uit local storage
 function getFromLocalStorage() {
     let activiteiten = JSON.parse(localStorage.getItem("activities")) || [];
     let laatsteActiviteit = activiteiten[activiteiten.length - 1];
-    console.log(laatsteActiviteit)
 
     if (laatsteActiviteit) {
         titelDashboard.textContent = laatsteActiviteit.titel;
@@ -113,6 +112,5 @@ function getFromLocalStorage() {
 }
 
 getFromLocalStorage()
-
 
 

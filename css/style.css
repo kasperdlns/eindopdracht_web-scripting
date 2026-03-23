@@ -329,6 +329,11 @@ i {
     border-radius: .5rem;
 }
 
+.current-day {
+    background-color: black;
+    color: white;
+}
+
 
 @media (max-width: 1055px) {
     .width {
