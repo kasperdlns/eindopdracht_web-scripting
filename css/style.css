@@ -69,7 +69,8 @@ body {
 }
 
 .popup {
-    display: none; /* verborgen bij start */
+    display: none;
+    /* verborgen bij start */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -78,7 +79,8 @@ body {
     padding: 2rem;
     border-radius: 2rem;
     border: 5px solid black;
-    flex-direction: column; /* werkt alleen als display: flex */
+    flex-direction: column;
+    /* werkt alleen als display: flex */
     gap: 1rem;
 }
 
@@ -149,6 +151,7 @@ button:hover {
     font-size: 6rem;
 
 }
+
 .t50 {
     opacity: 50%;
 }
@@ -169,7 +172,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -205,50 +208,57 @@ button:hover {
 
 /* chatgpt */
 
-            .progressBars {
-            display: flex;
-            gap: 20px; /* ruimte tussen de progress bars */
-            justify-content: space-between;
-            }
+.progressBars {
+    display: flex;
+    gap: 20px;
+    /* ruimte tussen de progress bars */
+    justify-content: space-between;
+}
 
-            .progressBars article {
-            flex: 0 0 40%; /* 40% van de breedte, geen krimp/groei */
-            }
+.progressBars article {
+    flex: 0 0 40%;
+    /* 40% van de breedte, geen krimp/groei */
+}
 
-            progress {
-            width: 100%;
-            height: 20px;
-            }
+progress {
+    width: 100%;
+    height: 20px;
+}
 
-            /* reset default browser look */
-            progress {
-            -webkit-appearance: none; /* Chrome/Safari */
-            -moz-appearance: none;    /* Firefox */
-            appearance: none;
-            width: 100%;
-            height: 20px;
-            }
+/* reset default browser look */
+progress {
+    -webkit-appearance: none;
+    /* Chrome/Safari */
+    -moz-appearance: none;
+    /* Firefox */
+    appearance: none;
+    width: 100%;
+    height: 20px;
+}
 
-            /* track (achtergrond van de bar) */
-            progress::-webkit-progress-bar {
-            background-color: #e8e8e8; /* lichtgrijze achtergrond */
-            border-radius: 10px;
-            border: 1px solid black;
-            }
+/* track (achtergrond van de bar) */
+progress::-webkit-progress-bar {
+    background-color: #e8e8e8;
+    /* lichtgrijze achtergrond */
+    border-radius: 10px;
+    border: 1px solid black;
+}
 
-            /* gevulde deel — Chrome, Edge, Safari */
-            progress::-webkit-progress-value {
-            background-color: #000000; /* groen */
-            border-radius: 10px;
-            }
+/* gevulde deel — Chrome, Edge, Safari */
+progress::-webkit-progress-value {
+    background-color: #000000;
+    /* groen */
+    border-radius: 10px;
+}
 
-            /* gevulde deel — Firefox */
-            progress::-moz-progress-bar {
-            background-color: #000000; /* groen */
-            border-radius: 10px;
-            }
+/* gevulde deel — Firefox */
+progress::-moz-progress-bar {
+    background-color: #000000;
+    /* groen */
+    border-radius: 10px;
+}
 
-            /* tot hier  */
+/* tot hier  */
 
 .doelBtn h2 {
     margin-bottom: 0rem;
@@ -263,7 +273,7 @@ button:hover {
     justify-content: space-between;
     padding: 0;
     margin: -1rem 0 0 0;
-    
+
 }
 
 footer {
@@ -329,6 +339,11 @@ i {
     border-radius: .5rem;
 }
 
+.dagen span:hover {
+    cursor: pointer;
+    user-select: none;
+}
+
 .current-day {
     background-color: black;
     color: white;
@@ -343,6 +358,65 @@ i {
     background-color: darkgreen;
     color: white;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td:nth-child(1) {
+    width: 5%;
+}
+
+/* nr */
+td:nth-child(2) {
+    width: 30%;
+}
+
+/* titel */
+td:nth-child(3) {
+    width: 15%;
+}
+
+/* wanneer */
+td:nth-child(4) {
+    width: 10%;
+}
+
+/* afstand */
+td:nth-child(5) {
+    width: 10%;
+}
+
+/* tijd */
+td:nth-child(6) {
+    width: 15%;
+}
+
+/* snelheid */
+td:nth-child(7) {
+    width: 10%;
+}
+
+td:nth-child(8) {
+    width: 100%
+}
+
+td {
+    padding: .5rem 1rem;
+
+}
+
+tr:nth-child(odd) {
+    background-color: #D9FF00;
+}
+
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+/* knop */
 
 
 @media (max-width: 1055px) {

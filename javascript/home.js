@@ -59,6 +59,11 @@ function saveActivity() {
     const datum = document.querySelector("#datum__Input").value;
     const notitie = document.querySelector("#notitie__Input").value;
 
+    if (titel === "" || activiteit === "" || snelheid === "" || afstand === "" || tijd === "" || datum === "") {
+        alert("Vul alle verplichte velden in!")
+        return
+    }
+
     titelDashboard.textContent = titel;
     snelheidDashboard.textContent = snelheid + " km/u";
     afstandDashboard.textContent = afstand;
