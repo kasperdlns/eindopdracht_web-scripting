@@ -13,7 +13,6 @@ dagenSpan.forEach(dag => {
 });
 
 const dagen = document.querySelector(".dagen");
-
 //dagen aanspreken bij klik
 dagen.addEventListener("click", function (e) {
     const span = e.target.closest("span"); //voorkom klikbare achtergrond met closest
@@ -55,17 +54,18 @@ dagen.addEventListener("click", function (e) {
 
     // console.log("failed:", aantalFailed, "succeeded", aantalSucceeded)
 });
+
 let challenges = [
-  "Loop 3 km zonder te stoppen",
-  "Fiets 10 km op stevig tempo",
-  "Wandel 10.000 stappen op een dag",
-  "Loop 2 km zo snel mogelijk",
-  "Fiets 20 minuten zonder pauze",
-  "Wandel 5 km zonder te stoppen",
-  "Loop in totaal 100 hoogtemeters",
-  "Fiets 15 km in één rit",
-  "Loop intervals: 1 min snel, 1 min rustig (10x)",
-  "Wandel 30 minuten in hoog tempo"
+    "Loop 3 km zonder te stoppen",
+    "Fiets 10 km op stevig tempo",
+    "Wandel 10.000 stappen op een dag",
+    "Loop 2 km zo snel mogelijk",
+    "Fiets 20 minuten zonder pauze",
+    "Wandel 5 km zonder te stoppen",
+    "Loop in totaal 100 hoogtemeters",
+    "Fiets 15 km in één rit",
+    "Loop intervals: 1 min snel, 1 min rustig (10x)",
+    "Wandel 30 minuten in hoog tempo"
 ];
 
 // seconden toevoegen aan aftelklok voor quote
@@ -73,16 +73,43 @@ let seconden = document.querySelector(".seconden")
 let timer = 10
 let randomIndex = 0
 
-let countdown = setInterval(() => {
-    if (timer > 0) {
-        timer--
-    } else {
-        clearInterval(countdown)
-        // console.log("toon random challenge")
-        randomIndex = Math.floor(Math.random() * challenges.length)
-        console.log(challenges[randomIndex])
-        document.querySelector(".challenges h1").textContent = challenges[randomIndex]
+const opgeslagenChallenge = localStorage.getItem("challenge");
+const opgeslagenDate = localStorage.getItem("challengeDatum");
+const opgeslagenVoltooid = localStorage.getItem("voltooid");
+
+const challengeVandaag = new Date().toISOString().split("T")[0];
+
+if (opgeslagenChallenge && opgeslagenDate === challengeVandaag) {
+    let challenge = localStorage.getItem("challenge")
+    document.querySelector(".challenges h1").textContent = challenge
+
+    if (opgeslagenVoltooid === "yes") {
+        document.querySelector(".challenges h1").style.textDecoration = "line-through";
+        document.querySelector(".current-day").style.background = "darkgreen"
     }
-    seconden.textContent = timer
-}, 1000);
+} else {
+    let countdown = setInterval(() => {
+        if (timer > 0) {
+            timer--
+        } else {
+            clearInterval(countdown) //stop countdown
+
+            randomIndex = Math.floor(Math.random() * challenges.length) //random getal zoeken
+            document.querySelector(".challenges h1").textContent = challenges[randomIndex] //random getal toevoegen aan challenge
+            localStorage.setItem("challenge", challenges[randomIndex]); // challenge opslagen in local storage
+            localStorage.setItem("challengeDatum", challengeVandaag);
+            localStorage.removeItem("voltooid")
+        }
+        seconden.textContent = timer
+    }, 1000);
+}
+
+let btn = document.querySelector(".challenges button");
+
+btn.addEventListener("click", function () {
+    localStorage.setItem("voltooid", "yes")
+    document.querySelector(".challenges h1").style.textDecoration = "line-through";
+    document.querySelector(".current-day").style.background = "darkgreen"
+});
+
 

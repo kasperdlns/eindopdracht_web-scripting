@@ -73,16 +73,3 @@ function deleteActivity(e) {
 
     getFromLocalStorage() //opnieuw alles laten updaten
 }
-
-/*
-<tr>
-    <td>1</td>
-    <td>Titel</td>
-    <td>wanneer</td>
-    <td>afstand</td>
-    <td>tijd</td>
-    <td>snelheid</td>
-    <td><button>Verwijderen</button></td>
-</tr>
-
-*/

@@ -4,7 +4,7 @@ const popup = document.querySelector(".popup");
 
 //popup tevoorschijn laten komen
 addActivity.addEventListener("click", function () {
-    popup.style.display = "block"
+    popup.classList.remove("hidden");
 })
 
 //actviteit opslaan 
@@ -12,7 +12,7 @@ const saveActivitiy = document.querySelector(".saveActivitiy");
 
 saveActivitiy.addEventListener("click", function () {
     saveActivity()
-    popup.style.display = "none"
+    popup.classList.add("hidden");
 });
 
 // quote veranderen
@@ -117,5 +117,18 @@ function getFromLocalStorage() {
 }
 
 getFromLocalStorage()
+
+let popupDoel = document.querySelector(".popupDoel")
+let buttonDoel = document.querySelector(".doelBtn")
+let saveDoel = document.querySelector(".saveDoel")
+buttonDoel.addEventListener("click", function() {
+    popupDoel.classList.remove("hidden")
+});
+
+saveDoel.addEventListener("click", function() {
+    popupDoel.classList.add("hidden")
+})
+
+
 
 

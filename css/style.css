@@ -7,6 +7,9 @@
 
 body {
     font-family: "WinkyRough";
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -20,7 +23,7 @@ body {
     border-radius: 0 0 2rem 2rem;
     background-color: white;
     margin-top: 0;
-}
+} 
 
 .navbar img {
     width: 3rem;
@@ -68,8 +71,8 @@ body {
     padding-right: 20%;
 }
 
-.popup {
-    display: none;
+.popup, .popupDoel {
+    display: block;
     /* verborgen bij start */
     position: fixed;
     top: 50%;
@@ -84,22 +87,27 @@ body {
     gap: 1rem;
 }
 
-.popup div:not(:last-child) {
+.hidden {
+    display: none;
+}
+
+.popup div:not(:last-child), .popupDoel div:not(:last-child) {
     margin-bottom: 1rem;
 }
 
-.popup div {
+.popup div, .popupDoel div {
     display: flex;
     justify-content: space-between;
 }
 
-.popup button {
+.popup button, .popupDoel button {
     width: 100%;
     font-size: 1rem;
 }
 
 main {
     padding-top: calc(87px + 2rem);
+    flex: 1;
 }
 
 .dashboard .topItems {
@@ -282,6 +290,7 @@ footer {
     margin-top: 2rem;
     color: white;
     display: flex;
+    width: calc(100% - 40%);
     justify-content: space-between;
     align-items: center;
     padding: 2rem 20%;
