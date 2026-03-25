@@ -118,15 +118,50 @@ function getFromLocalStorage() {
 
 getFromLocalStorage()
 
+// CHECK op button klikken
+// CHECK opslaan klikken
+// CHECK checken hoeveel articles er bestaan (max twee)
+// zoeken in local storage naar alle activiteiten met dat activiteitstype
+// totale afstand van dat activiteitstype optellen
+// totale afstand vergelijken met doelafstand
+// html aanmaken
+// opslaan in local storage
+// neertypen in value van progress 
+
+
 let popupDoel = document.querySelector(".popupDoel")
 let buttonDoel = document.querySelector(".doelBtn")
 let saveDoel = document.querySelector(".saveDoel")
-buttonDoel.addEventListener("click", function() {
+let progressBars = document.querySelectorAll(".progressBars article")
+
+buttonDoel.addEventListener("click", function () {
     popupDoel.classList.remove("hidden")
 });
 
-saveDoel.addEventListener("click", function() {
+saveDoel.addEventListener("click", function () {
     popupDoel.classList.add("hidden")
+
+    if (progressBars.length === 2) {
+        console.log("er kunnen er geen meer bij")
+    } else {
+        let activiteitsType = document.querySelector("#doel-Activiteit").value
+
+        let activiteiten = JSON.parse(localStorage.getItem("activities")) || [];
+
+        let gefilterdeActiviteiten = activiteiten.filter(function(item) {
+            return item.activiteit === activiteitsType
+        })
+
+        gefilterdeActiviteiten.forEach(a => {
+            console.log(a.afstand)
+        });
+
+        let totaleAfstand = gefilterdeActiviteiten.reduce(function(totaal, activiteit) {
+            return totaal + Number(activiteit.afstand)
+        }, 0);
+
+        console.log(totaleAfstand)
+    }
 })
 
 
