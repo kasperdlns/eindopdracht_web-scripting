@@ -274,6 +274,10 @@ progress::-moz-progress-bar {
     align-items: center;
 }
 
+.error {
+    color: red;
+}
+
 .doelBtn {
     display: flex;
     flex-direction: row;

@@ -121,8 +121,8 @@ getFromLocalStorage()
 // CHECK op button klikken
 // CHECK opslaan klikken
 // CHECK checken hoeveel articles er bestaan (max twee)
-// zoeken in local storage naar alle activiteiten met dat activiteitstype
-// totale afstand van dat activiteitstype optellen
+// CHECK zoeken in local storage naar alle activiteiten met dat activiteitstype
+// CHECK totale afstand van dat activiteitstype optellen
 // totale afstand vergelijken met doelafstand
 // html aanmaken
 // opslaan in local storage
@@ -133,36 +133,75 @@ let popupDoel = document.querySelector(".popupDoel")
 let buttonDoel = document.querySelector(".doelBtn")
 let saveDoel = document.querySelector(".saveDoel")
 let progressBars = document.querySelectorAll(".progressBars article")
+let doelen = document.querySelector(".progressBars")
+let titelPopup = document.querySelector(".titelDoel input")
+let doelafstand = document.querySelector(".doelAfstand input")
 
 buttonDoel.addEventListener("click", function () {
     popupDoel.classList.remove("hidden")
 });
 
 saveDoel.addEventListener("click", function () {
+    addProgress()
+    saveDoelToLocalStorage()
+})
+
+function addProgress() {
     popupDoel.classList.add("hidden")
 
-    if (progressBars.length === 2) {
-        console.log("er kunnen er geen meer bij")
+    if (doelen.children.length === 2) {
+
+        document.querySelector(".error").classList.remove("hidden")
+        console.log("er kunnen er geen meer bij");
+
     } else {
-        let activiteitsType = document.querySelector("#doel-Activiteit").value
+        let activiteitsType = document.querySelector("#doel-Activiteit")
 
         let activiteiten = JSON.parse(localStorage.getItem("activities")) || [];
 
-        let gefilterdeActiviteiten = activiteiten.filter(function(item) {
-            return item.activiteit === activiteitsType
+        let gefilterdeActiviteiten = activiteiten.filter(function (item) {
+            return item.activiteit === activiteitsType.value
         })
 
-        gefilterdeActiviteiten.forEach(a => {
-            console.log(a.afstand)
-        });
-
-        let totaleAfstand = gefilterdeActiviteiten.reduce(function(totaal, activiteit) {
+        let totaleAfstand = gefilterdeActiviteiten.reduce(function (totaal, activiteit) {
             return totaal + Number(activiteit.afstand)
         }, 0);
 
-        console.log(totaleAfstand)
+        let article = document.createElement("article");
+        doelen.appendChild(article)
+
+        let p = document.createElement("p")
+        article.appendChild(p)
+        p.textContent = titelPopup.value;
+
+        let progress = document.createElement("progress")
+        article.appendChild(progress)
+
+        console.log(totaleAfstand) // -> deze op 100 zetten
+        console.log(doelafstand.value) // -> deze vergelijken met totaleAfstand op 100
+
+        let doel = Number(doelafstand.value) // doel omzetten naar number
+
+        let percentage = (totaleAfstand / doel) * 100 //hoeveel procent van doel al bereikt
+
+        progress.value = percentage;
+        progress.max = doel
     }
-})
+}
+
+function saveDoelToLocalStorage() {
+    
+}
+
+function updateProgress() {
+
+}
+
+
+// <article>
+//      <p>2000km lopen dit jaar</p>
+//      <progress value="30" max="100"></progress>
+// </article>
 
 
 
