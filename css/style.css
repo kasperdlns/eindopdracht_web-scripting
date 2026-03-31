@@ -23,7 +23,7 @@ body {
     border-radius: 0 0 2rem 2rem;
     background-color: white;
     margin-top: 0;
-} 
+}
 
 .navbar img {
     width: 3rem;
@@ -71,7 +71,8 @@ body {
     padding-right: 20%;
 }
 
-.popup, .popupDoel {
+.popup,
+.popupDoel {
     display: block;
     /* verborgen bij start */
     position: fixed;
@@ -91,16 +92,19 @@ body {
     display: none;
 }
 
-.popup div:not(:last-child), .popupDoel div:not(:last-child) {
+.popup div:not(:last-child),
+.popupDoel div:not(:last-child) {
     margin-bottom: 1rem;
 }
 
-.popup div, .popupDoel div {
+.popup div,
+.popupDoel div {
     display: flex;
     justify-content: space-between;
 }
 
-.popup button, .popupDoel button {
+.popup button,
+.popupDoel button {
     width: 100%;
     font-size: 1rem;
 }
@@ -214,22 +218,24 @@ button:hover {
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px) rotate(-2deg);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateY(5px) rotate(1deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotate(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) rotate(-2deg);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateY(5px) rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
 }
 
 .text-quotes {
-  animation: fadeIn 0.6s ease forwards;
+    animation: fadeIn 0.6s ease forwards;
 }
 
 /* chatgpt */
@@ -294,7 +300,7 @@ progress::-moz-progress-bar {
 
 .error {
     color: red;
-} 
+}
 
 .doelBtn {
     display: flex;
@@ -461,10 +467,34 @@ tr:nth-child(even) {
         width: calc(100% - 4rem);
         padding-left: 2rem;
         padding-right: 2rem;
-        border-radius: 0; /* optioneel: full edge look */
+        border-radius: 0;
+        /* optioneel: full edge look */
     }
+}
+
+@media (max-width: 650px) {
+
 
     .dashboard .topItems {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .overzicht div p {
+        height: 10rem;
+    }
+
+    header nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .popup div, .popupDoel div {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .popup input, .popupDoel input {
+        width: 100%;
     }
 }
