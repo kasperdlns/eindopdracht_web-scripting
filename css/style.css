@@ -12,6 +12,11 @@ body {
     min-height: 100vh;
 }
 
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -100,7 +105,9 @@ body {
 .popup div,
 .popupDoel div {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.3rem;
+
 }
 
 .popup button,
@@ -508,9 +515,10 @@ tr:nth-child(even) {
     }
 
     .popup input,
-    .popupDoel input {
+    .popupDoel input,
+    .popup select,
+    .popupDoel select {
         width: 100%;
-        height: 1rem;
     }
 
     .dagen {
