@@ -151,6 +151,7 @@ button {
     margin: none;
     padding: none;
     transition: all 0.3s ease, background-color 0.3s ease;
+    color: black;
 }
 
 button:hover {
@@ -471,6 +472,9 @@ tr:nth-child(even) {
 }
 
 @media (max-width: 650px) {
+    h1 {
+        font-size: 1.5rem;
+    }
 
     .navbar {
         width: calc(100% - 4rem);
@@ -491,6 +495,12 @@ tr:nth-child(even) {
         grid-template-columns: 1fr 1fr;
     }
 
+    .popup, .popupDoel {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 80%;
+    }
+
     .popup div,
     .popupDoel div {
         display: grid;
@@ -500,6 +510,7 @@ tr:nth-child(even) {
     .popup input,
     .popupDoel input {
         width: 100%;
+        height: 1rem;
     }
 
     .dagen {
