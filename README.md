@@ -16,3 +16,11 @@ Mijn concept draait hoofdzakelijk om persoonlijke doelen, en random challenges d
 ------ activiteiten pagina -------
 - tot slot heb je de activiteiten pagina. dit is een overzicht van alle activiteiten. het geeft het aantal activiteiten mee, titel, datum, afstand, tijd, snelheid en een verwijder button.
 - met de verwijder button kan je een activiteit verwijderen. de activiteit wordt dan verwijderd uit local storage, en alle indexen worden aangepast naar de nieuwe telling, zonder de verwijderde activiteit
+
+
+------ link naar FIGMA ------
+https://www.figma.com/design/63HZcioCu7Wj9bVplgAc0I/DVG-A-Kasper-Daelemans---Web-Scripting-Eindopdracht?node-id=0-1&t=jUvLlQjMksm1hDBi-1
+
+
+------ link naar online pagina - github ------
+https://kasperdlns.github.io/eindopdracht_web-scripting/index.html

@@ -45,14 +45,8 @@ function newQuote() {
 
     // reset animatie
     quoteElement.classList.remove("text-quotes");
-
-    // force reflow
     void quoteElement.offsetWidth;
-
-    // nieuwe tekst
     quoteElement.textContent = quotes[randomQuoteIndex];
-
-    // animatie opnieuw starten
     quoteElement.classList.add("text-quotes");
 }
 
@@ -132,22 +126,6 @@ function getFromLocalStorage() {
 
 getFromLocalStorage()
 
-//btn klik: doel toevoegen -> gebruiker kan input ingeven
-//btn klkik: doel opslaan
-//checken hoeveel doelen er al bestaan -> meer dan twee error
-//max en huidige km"s berekenen en omzetten naar 100 voor progress (max & value) (aparte functie)
-//opslaan in local storage (aparte functie)
-//ophalen uit local storage (aparte functie) -> dit moet bij herladen en als er een nieuwe activiteit wordt toegevoegd
-//neerprinten in html (aparte functie) -> dit moet bij herladen en als er een nieuwe activiteit wordt toegevoegd
-
-//functies:     saveToLocalStorage
-//              CalculateValues
-//              saveToLocalStorage
-//              getFromLocalStorage
-//              PasteInHtml
-
-
-// DOM elements
 let popupDoel = document.querySelector(".popupDoel");
 let buttonDoel = document.querySelector(".doelBtn");
 let saveDoelBtn = document.querySelector(".saveDoel");
@@ -164,7 +142,6 @@ buttonDoel.addEventListener("click", () => {
 saveDoelBtn.addEventListener("click", function () {
     addProgress();
 });
-
 
 
 

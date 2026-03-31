@@ -1,9 +1,3 @@
-// alles ophalen uit local storage
-// door alles lopen en html aanmaken per activiteit
-// alles uit local storage in die html plaatsen
-// automtische optelling bij index (hoeveelste activiteit)
-// activiteit verwijderen (local storage verwijderen en opnieuw lopen)
-// index aanpassen
 
 getFromLocalStorage()
 
@@ -56,19 +50,16 @@ function getFromLocalStorage() {
         button.addEventListener("click", deleteActivity)
 
     });
-    // code voor alles op te halen uit local storage en in array steken
-    // steek de array.length in men html
-    // index maken
 }
 
 function deleteActivity(e) {
     let index = e.target.dataset.index
     let activiteiten = JSON.parse(localStorage.getItem("activities")) || []
 
-    // Verwijder het item uit de array
+    // verwijder het item uit de array
     activiteiten.splice(index, 1)
 
-    // Sla opnieuw op in localStorage
+    // sla de nieuwe vorm (zonder verwijderde activiteit) terug op
     localStorage.setItem("activities", JSON.stringify(activiteiten))
 
     getFromLocalStorage() //opnieuw alles laten updaten
