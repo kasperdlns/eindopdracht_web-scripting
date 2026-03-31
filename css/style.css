@@ -167,7 +167,6 @@ button:hover {
 .overzicht div {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     gap: 1rem;
     height: 100%;
     width: 100%;
@@ -212,6 +211,25 @@ button:hover {
 
 .quote h1 {
     margin-top: -.5rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) rotate(-2deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(5px) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.text-quotes {
+  animation: fadeIn 0.6s ease forwards;
 }
 
 /* chatgpt */
@@ -434,11 +452,19 @@ tr:nth-child(even) {
 
 @media (max-width: 1055px) {
     .width {
-        padding-left: 0%;
-        padding-right: 0%;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
-    .navbar {
-        width: 100%;
+    .navbar,
+    footer {
+        width: calc(100% - 4rem);
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-radius: 0; /* optioneel: full edge look */
+    }
+
+    .dashboard .topItems {
+        grid-template-columns: 1fr;
     }
 }

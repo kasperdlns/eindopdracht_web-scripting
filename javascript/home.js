@@ -13,7 +13,9 @@ const saveActivitiy = document.querySelector(".saveActivitiy");
 saveActivitiy.addEventListener("click", function () {
     saveActivity()
     popup.classList.add("hidden");
+    pasteInHtml();
 });
+
 
 // quote veranderen
 let quotes = [
@@ -39,7 +41,19 @@ let timerQuote = setInterval(function () {
 
 function newQuote() {
     let randomQuoteIndex = Math.floor(Math.random() * quotes.length);
-    document.querySelector(".quote h1").textContent = quotes[randomQuoteIndex]
+    const quoteElement = document.querySelector(".quote h1");
+
+    // reset animatie
+    quoteElement.classList.remove("text-quotes");
+
+    // force reflow
+    void quoteElement.offsetWidth;
+
+    // nieuwe tekst
+    quoteElement.textContent = quotes[randomQuoteIndex];
+
+    // animatie opnieuw starten
+    quoteElement.classList.add("text-quotes");
 }
 
 const titelDashboard = document.querySelector(".titel__dashboard");
@@ -133,85 +147,123 @@ getFromLocalStorage()
 //              PasteInHtml
 
 
+// DOM elements
+let popupDoel = document.querySelector(".popupDoel");
+let buttonDoel = document.querySelector(".doelBtn");
+let saveDoelBtn = document.querySelector(".saveDoel");
+let progressContainer = document.querySelector(".progressBars");
+let titelPopup = document.querySelector(".titelDoel input");
+let doelafstand = document.querySelector(".doelAfstand input");
+
+// Show popup
+buttonDoel.addEventListener("click", () => {
+    popupDoel.classList.remove("hidden");
+});
+
+// Save goal button
+saveDoelBtn.addEventListener("click", function () {
+    addProgress();
+});
 
 
 
 
 
 
-// let popupDoel = document.querySelector(".popupDoel")
-// let buttonDoel = document.querySelector(".doelBtn")
-// let saveDoel = document.querySelector(".saveDoel")
-// let progressBars = document.querySelectorAll(".progressBars article")
-// let doelen = document.querySelector(".progressBars")
-// let titelPopup = document.querySelector(".titelDoel input")
-// let doelafstand = document.querySelector(".doelAfstand input")
+//opslaan van het doel
+function saveGoalToLocalStorage(goal) {
+    let savedGoals = JSON.parse(localStorage.getItem("goals")) || []; //geef wel een lege string terug indien niets gevonden
+    savedGoals.push(goal);
+    localStorage.setItem("goals", JSON.stringify(savedGoals));
+}
 
-// buttonDoel.addEventListener("click", function () {
-//     popupDoel.classList.remove("hidden")
-// });
+//berekenen van de waarden (al gedaan/doel)
+function calculateValues(activityType) {
+    let activities = JSON.parse(localStorage.getItem("activities")) || [];
+    let filtered = activities.filter(item => item.activiteit === activityType);
+    let totalDistance = filtered.reduce((total, item) => total + Number(item.afstand), 0);
+    return totalDistance;
+}
 
-// saveDoel.addEventListener("click", function () {
-//     addProgress()
-//     saveDoelToLocalStorage()
-// })
+//ophalen van doel(en) uit local storage
+function getGoalFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("goals")) || [];
+}
 
-// function addProgress() {
-//     popupDoel.classList.add("hidden")
+// voeg het doel toe
+function addProgress() {
+    popupDoel.classList.add("hidden");
 
-//     if (doelen.children.length === 2) {
+    if (progressContainer.children.length === 2) {
+        document.querySelector(".error").classList.remove("hidden");
+        console.log("Er kunnen er geen meer bij");
+        return;
+    }
 
-//         document.querySelector(".error").classList.remove("hidden")
-//         console.log("er kunnen er geen meer bij");
+    let activiteitType = document.querySelector("#doel-Activiteit").value;
+    let totalDistance = calculateValues(activiteitType);
+    let goalValue = Number(doelafstand.value);
 
-//     } else {
-//         let activiteitsType = document.querySelector("#doel-Activiteit")
+    // maak de html elementen
+    let article = document.createElement("article");
 
-//         let activiteiten = JSON.parse(localStorage.getItem("activities")) || [];
+    let p = document.createElement("p");
+    p.textContent = titelPopup.value;
 
-//         let gefilterdeActiviteiten = activiteiten.filter(function (item) {
-//             return item.activiteit === activiteitsType.value
-//         })
+    let progress = document.createElement("progress");
+    progress.value = totalDistance;
+    progress.max = goalValue;
 
-//         let totaleAfstand = gefilterdeActiviteiten.reduce(function (totaal, activiteit) {
-//             return totaal + Number(activiteit.afstand)
-//         }, 0);
+    article.appendChild(p);
+    article.appendChild(progress);
+    progressContainer.appendChild(article);
 
-//         let article = document.createElement("article");
-//         doelen.appendChild(article)
+    // Save goal in localStorage
+    saveGoalToLocalStorage({
+        titel: titelPopup.value,
+        activiteit: activiteitType,
+        doel: goalValue,
+        progress: totalDistance
+    });
+}
 
-//         let p = document.createElement("p")
-//         article.appendChild(p)
-//         p.textContent = titelPopup.value;
+//plak het in html
+function pasteInHtml() {
+    progressContainer.innerHTML = "";
 
-//         let progress = document.createElement("progress")
-//         article.appendChild(progress)
+    let savedGoals = getGoalFromLocalStorage();
 
-//         console.log(totaleAfstand) // -> deze op 100 zetten
-//         console.log(doelafstand.value) // -> deze vergelijken met totaleAfstand op 100
+    savedGoals.forEach(goal => {
+        let totalDistance = calculateValues(goal.activiteit); // 🔥 opnieuw berekenen
 
-//         let doel = Number(doelafstand.value) // doel omzetten naar number
+        let article = document.createElement("article");
 
-//         let percentage = (totaleAfstand / doel) * 100 //hoeveel procent van doel al bereikt
+        let p = document.createElement("p");
+        p.textContent = goal.titel;
 
-//         progress.value = percentage;
-//         progress.max = doel
-//     }
-// }
+        let progress = document.createElement("progress");
+        progress.value = totalDistance;
+        progress.max = goal.doel;
 
-// function saveDoelToLocalStorage() {
-    
-// }
-
-// function updateProgress() {
-
-// }
+        article.appendChild(p);
+        article.appendChild(progress);
+        progressContainer.appendChild(article);
+    });
+}
 
 
-// // <article>
-// //      <p>2000km lopen dit jaar</p>
-// //      <progress value="30" max="100"></progress>
-// // </article>
+pasteInHtml();
+
+const stat1 = document.querySelector(".stat__1");
+
+let activiteitenLocalStorage = JSON.parse(localStorage.getItem("activities")) || [];
+let aantalActiviteiten = activiteitenLocalStorage.length;
+
+stat1.textContent = aantalActiviteiten
+
+
+
+
 
 
 
