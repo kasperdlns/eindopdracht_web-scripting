@@ -508,12 +508,6 @@ tr:nth-child(even) {
         width: 80%;
     }
 
-    .popup div,
-    .popupDoel div {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-    }
-
     .popup input,
     .popupDoel input,
     .popup select,
