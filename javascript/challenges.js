@@ -1,30 +1,28 @@
-//datum opvragen
+// datum opvragen
 const datum = new Date();
-const vandaag = datum.getDate()
+const vandaag = datum.getDate();
 
-let dagenSpan = document.querySelectorAll(".dagen span")
-//door alle dagen lopen en stoppen bij de dag die matcht met vandaag, classList toevoegen
+let dagenSpan = document.querySelectorAll(".dagen span");
+
+// Bepaal welke index vandaag is
+let vandaagIndex = 0;
 dagenSpan.forEach(dag => {
-    let index = parseInt(dag.getAttribute("data-index")); //omzetten naar number ipv string
-
-    if (index === vandaag) {
-        dag.classList.add("current-day")
+    let dagNummer = parseInt(dag.textContent);
+    if (dagNummer === vandaag) {
+        dag.classList.add("current-day");
+        vandaagIndex = parseInt(dag.dataset.index);
     }
 });
 
 const dagen = document.querySelector(".dagen");
-//dagen aanspreken bij klik
 dagen.addEventListener("click", function (e) {
-    const span = e.target.closest("span"); //voorkom klikbare achtergrond met closest
-
-    //check of het een span is
+    const span = e.target.closest("span");
     if (!span) return;
 
-    //check of de dag voor vandaag ligt (toekomst kan je nog ni weten)
     const index = parseInt(span.dataset.index);
-    if (index >= vandaag) return;
+    if (index >= vandaagIndex) return;
 
-    //classLists toevoegen
+    // classLists toevoegen/verwijderen
     if (!span.classList.contains("succeeded")) {
         span.classList.add("succeeded");
         span.classList.remove("failed");
@@ -33,26 +31,20 @@ dagen.addEventListener("click", function (e) {
         span.classList.add("failed");
     }
 
-    //aantal succes- en faildagen toevoegen
-    let aantalSucceeded = 0; //bijhouden hoeveel groen
-    let aantalFailed = 0; //bijhouden hoeveel rood
+    // aantal succes- en faildagen bijhouden
+    let aantalSucceeded = 0;
+    let aantalFailed = 0;
 
     dagenSpan.forEach(dag => {
         if (dag.classList.contains("failed")) {
-            aantalFailed++
+            aantalFailed++;
         } else if (dag.classList.contains("succeeded")) {
-            aantalSucceeded++
+            aantalSucceeded++;
         }
     });
 
-
-    let totaalSucceeded = document.querySelector(".totaalSucceeded");
-    totaalSucceeded.textContent = aantalSucceeded
-
-    let totaalFailed = document.querySelector(".totaalFailed");
-    totaalFailed.textContent = aantalFailed
-
-    // console.log("failed:", aantalFailed, "succeeded", aantalSucceeded)
+    document.querySelector(".totaalSucceeded").textContent = aantalSucceeded;
+    document.querySelector(".totaalFailed").textContent = aantalFailed;
 });
 
 let challenges = [

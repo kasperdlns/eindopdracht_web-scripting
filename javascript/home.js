@@ -255,11 +255,18 @@ function pasteInHtml() {
 pasteInHtml();
 
 const stat1 = document.querySelector(".stat__1");
+const stat2 = document.querySelector(".stat__2");
 
 let activiteitenLocalStorage = JSON.parse(localStorage.getItem("activities")) || [];
 let aantalActiviteiten = activiteitenLocalStorage.length;
 
 stat1.textContent = aantalActiviteiten
+
+
+const aantalDoelen = document.querySelector(".progressBars")
+stat2.textContent = aantalDoelen.children.length;
+
+
 
 
 
